@@ -9,8 +9,8 @@
             <script type="text/javascript"
                     src="${resURL}/plugin/buildgraph-view/scripts/jquery.jsPlumb-1.3.16-all-min.js"></script>
             <script type="text/javascript" src='${resURL}/plugin/buildgraph-view/scripts/angularjs.js'></script>
-
-            <script>jQuery.noConflict();</script>
+            <span class="build-graph-view-data" data-build-url="${it.buildUrl}"/>
+            <st:adjunct includes="org.jenkinsci.plugins.buildgraphview.BuildGraph.init"/>
 
             <style type="text/css">
 
@@ -156,11 +156,6 @@
                 <my-build-graph style="margin: 5px; width: 100%; height: 100%;" jenkinsurl="${resURL}">
                 </my-build-graph>
             </div>
-            <script type="text/javascript">
-                <![CDATA[
-                    var ajaxPath = '${it.buildUrl}' + '/BuildGraph/api/json';
-                ]]>
-            </script>
             <script type="text/javascript"
                     src='${resURL}/plugin/buildgraph-view/scripts/buildgraph-appctrl.js'></script>
         </l:main-panel>
