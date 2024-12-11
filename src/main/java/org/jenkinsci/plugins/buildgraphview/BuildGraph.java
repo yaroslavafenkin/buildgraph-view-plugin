@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
+import jenkins.model.Jenkins;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.SimpleDirectedGraph;
 import org.kohsuke.stapler.export.Exported;
@@ -169,7 +170,7 @@ public class BuildGraph implements Action {
             buildGraphNodeModel.setColumn(item.getDisplayColumn());
             buildGraphNodeModel.setColor(item.getIconColor().getHtmlBaseColor());
             buildGraphNodeModel.setTitle(item.getFullDisplayName());
-            buildGraphNodeModel.setDescription((item.getDescription() != null ? item.getDescription() : ""));
+            buildGraphNodeModel.setDescription((item.getDescription() != null ? Jenkins.get().getMarkupFormatter().translate(item.getDescription()) : ""));
             buildGraphNodeModel.setStarted(item.isStarted());
             buildGraphNodeModel.setRunning(item.getBuild().isBuilding());
             int progress = 0;
